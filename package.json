@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/boybutcher/ursa/issues"
   },
-  "homepage": "https://github.com/boybutcher/ursa#readme"
+  "homepage": "https://github.com/boybutcher/ursa#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
 }
