@@ -1,15 +1,15 @@
-const http = require('http');
+const express = require('express');
 
-const host = '127.0.0.1';
-const port = 3000;
+const app = express();
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.end('Tracking Ursa...');
-});
+app.get('/', (req, res) => {
+  res.send('Tracking Ursa...')
+})
 
+// app.post(`/sighting`, (req, res) => {
+  
+// })
 
-
-server.listen(port, host, () => {
-  console.log(`Ursa is running at http://${host}:${port}/`);
-});
+app.listen(3000, () => {
+  console.log(`Ursa server is listening in on port 3000`);
+})
