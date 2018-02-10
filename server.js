@@ -8,6 +8,7 @@ app.get(`/`, (req, res) => {
 
 app.post(`/sighting`, (req, res) => {
   console.log(`hit sighting endpoint...`)
+  console.log('req.body: ', req.body);
   res.send(`hit sighting endpoint...`)
 })
 
