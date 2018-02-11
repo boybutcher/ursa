@@ -29,6 +29,11 @@ app.get(`/sighting/search`, (req, res) => {
   })
 })
 
+app.get(`/sighting/:id`, (req, res) => {
+  console.log('req.params.id ', req.params.id);
+  res.send(req.params.id);
+})
+
 app.listen(3000, () => {
   console.log(`Ursa server is listening in on port 3000`);
 })
