@@ -30,8 +30,13 @@ app.get(`/sighting/search`, (req, res) => {
 })
 
 app.get(`/sighting/:id`, (req, res) => {
-  console.log('req.params.id ', req.params.id);
-  res.send(req.params.id);
+  db.findById(req.params.id, (err, result) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(result);
+    }
+  })
 })
 
 app.listen(3000, () => {

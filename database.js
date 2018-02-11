@@ -75,10 +75,18 @@ const fetchBears = (queryObj, callback) => {
 
   bearModel.find(searchObj, (err, result) => {
     if (err) {
-      console.log('err: ', err);
       callback(err, null);
     } else {
-      console.log('result: ', result);
+      callback(null, result);
+    }
+  })
+}
+
+const findById = (id, callback) => {
+  bearModel.find({_id: id}, (err, result) => {
+    if (err) {
+      callback(err, null);
+    } else {
       callback(null, result);
     }
   })
@@ -93,4 +101,5 @@ const clearBears = () => {
 module.exports.bearModel = bearModel;
 module.exports.storeBear = storeBear;
 module.exports.fetchBears = fetchBears;
+module.exports.findById = findById;
 module.exports.clearBears = clearBears;
