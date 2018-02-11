@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const db = require('./database.js');
 
 const app = express();
 
@@ -8,11 +9,19 @@ app.use(bodyParser.json());
 
 app.get(`/`, (req, res) => {
   res.send('Tracking Ursa...')
+  db.clearBears();
 })
 
 app.post(`/sighting`, (req, res) => {
   console.log(`POST to sighting...`)
-  res.send(req.body);
+  db.storeBear(req.body);
+  db.fetchBears((err, result) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(result);
+    }
+  })
 })
 
 app.listen(3000, () => {
