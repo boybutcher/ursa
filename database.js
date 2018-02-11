@@ -71,15 +71,17 @@ const fetchBears = (queryObj, callback) => {
   //   ...(zip_code ? {zip_code: zip_code} : {}),
   // };
 
-  console.log('searchObj: ', searchObj);
-
-  bearModel.find(searchObj, (err, result) => {
-    if (err) {
-      callback(err, null);
-    } else {
-      callback(null, result);
+  bearModel.
+    find(searchObj).
+    sort(sort ? 'num_bears' : null).
+    exec((err, result) => {
+      if (err) {
+        callback(err, null);
+      } else {
+        callback(null, result);
+      }
     }
-  })
+  )
 }
 
 const findById = (id, callback) => {
