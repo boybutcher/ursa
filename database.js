@@ -27,7 +27,8 @@ const storeBear = (bearObj) => {
   })
 }
 
-const fetchBears = (callback) => {
+const fetchBears = (queryObj, callback) => {
+  console.log('queryObj: ', queryObj);
   bearModel.find({}, (err, result) => {
     if (err) {
       console.log('err: ', err);

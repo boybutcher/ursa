@@ -20,7 +20,7 @@ app.post(`/sighting`, (req, res) => {
 
 app.get(`/sighting/search`, (req, res) => {
   console.log(`GET to /sighting/search...`);
-  db.fetchBears((err, result) => {
+  db.fetchBears(req.query, (err, result) => {
     if (err) {
       res.send(err);
     } else {
