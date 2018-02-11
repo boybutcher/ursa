@@ -13,8 +13,13 @@ app.get(`/`, (req, res) => {
 })
 
 app.post(`/sighting`, (req, res) => {
-  console.log(`POST to sighting...`)
+  console.log(`POST to /sighting...`);
   db.storeBear(req.body);
+  res.send(req.body);
+})
+
+app.get(`/sighting/search`, (req, res) => {
+  console.log(`GET to /sighting/search...`);
   db.fetchBears((err, result) => {
     if (err) {
       res.send(err);
