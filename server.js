@@ -1,15 +1,18 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const app = express();
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.get(`/`, (req, res) => {
   res.send('Tracking Ursa...')
 })
 
 app.post(`/sighting`, (req, res) => {
-  console.log(`hit sighting endpoint...`)
-  console.log('req.body: ', req.body);
-  res.send(`hit sighting endpoint...`)
+  console.log(`POST to sighting...`)
+  res.send(req.body);
 })
 
 app.listen(3000, () => {
